@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Quantico&display=swap');*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(#FF6400 , #FFAE15 );
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.div-grid{
+    /* border: 1px solid red; */
+    width: 97%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    column-gap: 10px;
+    position: relative;
+    left: 50%;
+    top: 30px;
+    height: 700px;
+    transform: translateX(-50%);
+}
+
+.quiz-left{
+    /* border: 1px solid red; */
+    position: relative; 
+    /* height: 700px; */
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    border-radius: 20px;
+}
+.logo-img{
+    /* border: 1px soli d red; */
+    width: 220px;
+    position: relative;
+    left: 20px;
+    top: 10px;
+}
+
+.quiz-question{
+    border: 7px solid transparent; 
+    border-image: linear-gradient(to bottom,#FF6400 , #FFAE15); 
+    border-image-slice: 1; 
+    border-radius: 20px;
+    position: relative;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    width: 65%;
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+
+    /* FONTS */
+    font-family: 'Paytone One', sans-serif;
+    font-size: 40px;
+    text-align: center;
+}
+
+.quiz-choices{
+    border: 3px solid #DDDDDD;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    width: 65%;
+
+    padding: 10px 0px;
+    height: auto;
+
+    /* FONTS */
+    font-family: 'Quantico', sans-serif;
+    font-size: 24px;
+    
+}
+.quiz-right{
+    /* border: 1px solid green; */
+    background-color: #fefefe;
+    border-radius: 20px;
+}
