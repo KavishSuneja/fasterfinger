@@ -4,90 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/a862feff0b.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div class="div-main">
-        <div class="div-grid">
-                        <div class="quiz-left">
-                            <img src="images/logo (2).png" alt="Image not Found" class="logo-img">
-                                <span class="quiz-question">Arrange the following in ascending order</span>
-                                    <div class="quiz-choices-outer">
-                                            <div class="quiz-choices">
-                                                    <span class="quiz-choice">a] 10asfasddd</span>
-                                                    <span class="quiz-choice">b] 10asdf</span>
-                                            </div>
-                                                <div class="quiz-choices">
-                                                        <span class="quiz-choice">a] 10asfasddd</span>
-                                                        <span class="quiz-choice">a] 10asdf</span>
-                                                </div>
-                                            </div>
-                                    
-                            <form class="quiz-form">
-                            <button type="submit" class="quiz-btn">
-                                <div class="btn-div">
-                                    <div class="quiz-letter">A</div>
-                                    <span class="quiz-frm-ques">a,b,c,d</span>
-                                </div>
-                            </button>
-                            
-                            <button type="submit" class="quiz-btn">
-                                <div class="btn-div">
-                                    <div class="quiz-letter">A</div>
-                                    <span class="quiz-frm-ques">a,b,c,d</span>
-                                </div>
-                            </button>
+    <div class="divmain">
+        <div class="main-grid">
+            <div class="input-upper-sec grid-box">
+                <img src="images/logo (2).png" class="input-upper-logo">
 
-                            <button type="submit" class="quiz-btn">
-                                <div class="btn-div">
-                                    <div class="quiz-letter">A</div>
-                                    <span class="quiz-frm-ques">a,b,c,d</span>
-                                </div>
-                            </button>
+                <div class="input-upper-div">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <input type="text" class="input-upper-input" placeholder="Enter player's name">
+                    <button class="input-add-btn">+</button>
+                </div>
 
-                            <button type="submit" class="quiz-btn">
-                                <div class="btn-div">
-                                    <div class="quiz-letter">A</div>
-                                    <span class="quiz-frm-ques">a,b,c,d</span>
-                                </div>
-                            </button>
+                <span class="input-general">Instructions<br> 
+                                            1.Their will be 10 Multiple Choice Questions<br>
+                                            2.Read questions carefully and answer correct<br>
+                                            3.Their will be a fixed time set for each question<br>
+                                            4.For every questions points will awarded<br>
+                                            5.leader board will be display on projector<br>
+                                            
+                    Read Instructions carefully<br> 
+                </span>
+            </div>
 
-                            <input type="submit" class="submitbtn">
-                              
-                            </form>
-                        </div>
+            <div class="buttom-data-sec grid-box"></div>
 
-
-                        <div class="quiz-right">
-                            <h2 class="lead_header">Leaderboard</h2>
-                            <div class="headers">
-                                <span class='head_val'>Rank</span>
-                                <span class='head_val'>Name</span>
-                                <span class='head_val'>Points</span>
-                                <span class='head_val'>Seconds</span>
-
-                            </div>
-                            <div class="data">
-                                    <span class='data_val' id="rank">#1</span>
-                                    <span class='data_val' id="name">Kavish</span>
-                                    <span class='data_val' id="pts">15</span>
-                                    <span class='data_val' id="time">30</span>
-                            </div>
-                        </div>
-
-
+            <div class="side-big-sec grid-box">
+                <img src="images/image-removebg-preview (27) (1) 1.png" class="big-secimg">
+                <span class="big-secspa1">Show the real</span>
+                <span class="big-secspa2">power of your mind</span>
+            </div>
         </div>
     </div>
-
-    <script>
-            document.querySelectorAll('.quiz-btn').forEach(ele => {
-      ele.onclick = function(){
-        ele.classList.toggle("active-choice");
-        quiz = ele.firstElementChild;
-        quiz.firstElementChild.classList.toggle("active-letter")
-        
-      }
-    });
-    </script>
 </body>
 </html>

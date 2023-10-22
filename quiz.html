@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <div class="div-main">
+        <div class="div-grid">
+                        <div class="quiz-left">
+                            <img src="images/logo (2).png" alt="Image not Found" class="logo-img">
+                                <span class="quiz-question">Arrange the following in ascending order</span>
+                                    <div class="quiz-choices-outer">
+                                            <div class="quiz-choices">
+                                                    <span class="quiz-choice">a] 10asfasddd</span>
+                                                    <span class="quiz-choice">b] 10asdf</span>
+                                            </div>
+                                                <div class="quiz-choices">
+                                                        <span class="quiz-choice">a] 10asfasddd</span>
+                                                        <span class="quiz-choice">a] 10asdf</span>
+                                                </div>
+                                            </div>
+                                    
+                            <form class="quiz-form">
+                            <button type="submit" class="quiz-btn">
+                                <div class="btn-div">
+                                    <div class="quiz-letter">A</div>
+                                    <span class="quiz-frm-ques">a,b,c,d</span>
+                                </div>
+                            </button>
+                            
+                            <button type="submit" class="quiz-btn">
+                                <div class="btn-div">
+                                    <div class="quiz-letter">A</div>
+                                    <span class="quiz-frm-ques">a,b,c,d</span>
+                                </div>
+                            </button>
+
+                            <button type="submit" class="quiz-btn">
+                                <div class="btn-div">
+                                    <div class="quiz-letter">A</div>
+                                    <span class="quiz-frm-ques">a,b,c,d</span>
+                                </div>
+                            </button>
+
+                            <button type="submit" class="quiz-btn">
+                                <div class="btn-div">
+                                    <div class="quiz-letter">A</div>
+                                    <span class="quiz-frm-ques">a,b,c,d</span>
+                                </div>
+                            </button>
+
+                            <input type="submit" class="submitbtn">
+                              
+                            </form>
+                        </div>
+
+
+                        <div class="quiz-right">
+                            <h2 class="lead_header">Leaderboard</h2>
+                            <div class="headers">
+                                <span class='head_val'>Rank</span>
+                                <span class='head_val'>Name</span>
+                                <span class='head_val'>Points</span>
+                                <span class='head_val'>Seconds</span>
+
+                            </div>
+                            <div class="data">
+                                    <span class='data_val' id="rank">#1</span>
+                                    <span class='data_val' id="name">Kavish</span>
+                                    <span class='data_val' id="pts">15</span>
+                                    <span class='data_val' id="time">30</span>
+                            </div>
+                        </div>
+
+
+        </div>
+    </div>
+
+    <script>
+            document.querySelectorAll('.quiz-btn').forEach(ele => {
+      ele.onclick = function(){
+        ele.classList.toggle("active-choice");
+        quiz = ele.firstElementChild;
+        quiz.firstElementChild.classList.toggle("active-letter")
+        
+      }
+    });
+    </script>
+</body>
+</html>
