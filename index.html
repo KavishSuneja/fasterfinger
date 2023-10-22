@@ -16,23 +16,43 @@
                 <img src="images/logo (2).png" class="input-upper-logo">
 
                 <div class="input-upper-div">
-                    <i class="fa-solid fa-arrow-right"></i>
-                    <input type="text" class="input-upper-input" placeholder="Enter player's name">
-                    <button class="input-add-btn">+</button>
+                    
+                    
+                    <select id="cars" name="cars" class="input-upper-input">
+                        <option value="volvo" selected class="input-add-btn">Batch 1 </option>
+                        <option value="saab" class="input-add-btn">Batch 2</option>
+                        <option value="fiat" class="input-add-btn">Batch 3</option>
+                        <option value="audi" class="input-add-btn">Batch 4</option>
+                      </select>
                 </div>
 
-                <span class="input-general">Instructions<br> 
-                                            1.Their will be 10 Multiple Choice Questions<br>
+                <span class="input-general"><b>Instructions</b> </span>
+                <span class="input-general2">1.Their will be 10 Multiple Choice Questions<br>
                                             2.Read questions carefully and answer correct<br>
                                             3.Their will be a fixed time set for each question<br>
                                             4.For every questions points will awarded<br>
-                                            5.leader board will be display on projector<br>
+                                            5.leader board will be display on projector</span>
                                             
-                    Read Instructions carefully<br> 
+                                            <span class="input-general"><b>Read Instructions carefully</b> 
                 </span>
             </div>
 
-            <div class="buttom-data-sec grid-box"></div>
+            <div class="buttom-data-sec grid-box">
+                <div class="input-main-main">
+                    <div class="input-main">
+                            <input type="text" class="input-bot-input" placeholder="Enter player's name">
+                            <button class="input-add-btn-bot add-user">+</button>
+                    </div>
+
+                </div>
+
+                <input type="submit" class="submitbtn" value="Start Quiz">
+
+
+
+
+
+            </div>
 
             <div class="side-big-sec grid-box">
                 <img src="images/image-removebg-preview (27) (1) 1.png" class="big-secimg">
@@ -42,4 +62,27 @@
         </div>
     </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+
+<script>
+    $(document).ready(function(){
+        $(".add-user").click(function(e){
+            $(".input-main-main").prepend(`<div class="input-main">
+                    <input type="text" class="input-bot-input" placeholder="Enter player's name">
+                    <button class="input-add-btn-bot del-user">-</button>
+            </div>`)
+        });
+        
+
+        $(document).on('click' , '.del-user' , function(e){
+            e.preventDefault();
+            let row_item = $(this).parent();
+            $(row_item).remove();
+        });
+    
+
+    });
+</script>
 </html>
