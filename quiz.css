@@ -663,3 +663,29 @@ body{
         display: none;
     }
 }
+
+
+.active-choice-sub{
+    background: #484B57;
+    border: 2px solid white;
+    box-shadow: 0px 0p 20px #FFAE15;
+}
+
+
+@keyframes glowing {
+    0% {
+      background: linear-gradient(to right,#FF6400 , #FFAE15 );
+      box-shadow: 0 0 5px #FF6400;
+    }
+    50% {
+      background: linear-gradient(to left,#FF6400 , #FFAE15 );
+      box-shadow: 0 0 10px #000000;
+    }
+    100% {
+      background:linear-gradient(to right,#FF6400 , #FFAE15 ) ;
+      box-shadow: 0 0 5px #FFAE15;
+    }
+  }
+  .data {
+    animation: glowing 1500ms infinite;
+  }
