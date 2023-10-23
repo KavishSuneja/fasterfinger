@@ -104,21 +104,6 @@ body{
 
 
 
-
-
-
-
-.buttom-data-sec {
-    /* border: 1px solid red; */
-    /* grid-row: 1/2; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 0px;
-    
-    width:100%;
-}
-
 .input-main {
     display: flex;
     justify-content: center;
@@ -128,21 +113,6 @@ body{
     flex-direction: row;
     margin-bottom: 5px;
 }
-.input-main2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 65vw;
-    /* border: 1px solid black; */
-    flex-direction: row;
-    margin-bottom: 5px;
-}
-.input-main-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .input-add-btn-bot {
     border: 0px solid black;
     height: 40px;
@@ -159,33 +129,116 @@ body{
     color: white;
 }
 
-.input-bot-input {
-    border: 1px solid #000000;
-    width: 35%;
+.input-field{
+    position: relative;
+  }
+  .input-field input{
+    width: 300px;
     height: 45px;
-    border-radius: 20px;
-    margin: 0px 25px;
-    text-align: center;
-    font-size: 17px;
-    /* border: 1px solid black; */
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 0 15px;
+    border: 2px solid #000;
+    background: transparent;
+    color: black;
+    outline: none;
+    margin: 0px 5px;
+  }
+  .input-field label{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: rgba(#020202,#020202,#020202,0.02);
+    font-size: 18px;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+  input:focus{
+    border: 2px solid #FF6400;
+  }
+  input:focus ~ label,
+  input:valid ~ label{
+    top: 0;
+    left: 15px;
+    font-size: 16px;
+    padding: 0 2px;
+    background: #fff;
+    color: #FF6400;
+  }
+
+
+
+.buttom-data-sec {
+    /* border: 1px solid red; */
+    /* grid-row: 1/2; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0px;
+    
+    width:100%;
 }
 
-.del-user {
+
+.input-main2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* border: 1px solid black; */
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.input-main-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.del-us {
     background-color: #8b0000;
     font-size: 17px;
     /* margin: 0px 35px; */
+    
+}
+.add-user:hover {
+    background-color: #fff;
+    font-size: 17px;
+    /* margin: 0px 35px; */
+    color: green;
+    border: 2px solid green;
+    transition: all 0.2s;
+}
+.del-us:hover {
+    background-color: #fff;
+    font-size: 17px;
+    /* margin: 0px 35px; */
+    color: #8b0000;
+    border: 2px solid #8b0000;
+    transition: all 0.2s;
 }
 .user-name{
 
-    width: 35%;
+    width: 300px;
     font-family: 'Roboto', sans-serif;
     font-size: 23px;
     color: #000000;
-    width: 35%;
+    
     margin: 0px 25px;
     text-align: center;
-    
- 
+    /* border:1px solid #000; */
+    width: 300px;
+    /* height: 45px; */
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 0 15px;
+    /* border: 2px solid #000; */
+    background: transparent;
+    color: black;
+    outline: none;
+    margin: 0px 5px;
     
 }
 .submitbtn {
@@ -372,20 +425,15 @@ body{
     /* border: 1px solid black; */
 }
 
-.del-user {
-    background-color: #8b0000;
-    font-size: 17px;
-    /* margin: 0px 35px; */
-}
+
 .user-name{
 
-    width: 50%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 23px;
-    color: #000000;
-    width: 50%;
-    margin: 0px 25px;
+    width: 300px;
+    /* height: 45px; */
+    /* border-radius: 20px; */
+    margin: 0px 5px;
     text-align: center;
+    font-size: 20px;
     /* border: 1px solid black; */
  
     
@@ -403,7 +451,11 @@ body{
     font-size: 20px;
     color: #fefefe;
 }
+.del-us {
+    background-color: #8b0000;
+    font-size: 17px;
+    /* margin: 0px 35px; */
+    color: white;
 }
-
-
+}
 

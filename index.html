@@ -39,13 +39,21 @@
             <div class="buttom-data-sec grid-box">
                 <div class="input-main-main">
                     <div class="input-main">
-                        <input type="text" required class="input-bot-input" placeholder="Enter player's name" >
+                        <!-- <input type="text" required class="input-bot-input" placeholder="Enter player's name" >
+                         -->
+                        <div class="input-field">
+                            <input type="text" required class="input-inner"> 
+                            <label>Enter Player Name</label>
+                          </div>
                         <button class="input-add-btn-bot add-user">+</button>
                     </div>
                     <div class="user-list">
 
                     </div>
                 </div>
+
+
+
                 <input type="submit" class="submitbtn" value="Start Quiz">
             </div>
 
@@ -69,13 +77,13 @@
         $(".add-user").click(function(e) {
 
 
-            if(!$('input').val()){
+            if(!$('.input-inner').val()){
                     alert("Input Feild Empty!!")
                 }   
                 else{
-                    $(".user-list").append(`<div class="input-main input-main2"><span class="user-name">${$(".input-bot-input").val()}</span>
-                        <button class="input-add-btn-bot del-user" onclick=this.parentElement.remove()> - </button></div>`)
-            $('.input-bot-input').val("");
+                    $(".user-list").append(`<div class="input-main input-main2"><span class="user-name">${$(".input-inner").val()}</span>
+                        <button class="input-add-btn-bot del-us" onclick=this.parentElement.remove()> - </button></div>`)
+            $('.input-inner').val("");
                 }
 
 
