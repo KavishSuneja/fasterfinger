@@ -79,6 +79,7 @@
         userarray=[];
         $(".add-user").click(function(e) {
             $(".user-list").append(`<div class="user"><span class="user-name">${$(".input-bot-input").val()}</span><button class="remove-user" onclick=this.parentElement.remove()> - </button></div>`)
+            
             $('.input-bot-input').val("");
         });
 
