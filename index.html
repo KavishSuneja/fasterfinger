@@ -65,10 +65,15 @@
 
 
 <script>
+    
     $(document).ready(function() {
+
+        userarray=[];
         $(".add-user").click(function(e) {
             $(".user-list").append(`<div class="user"><span class="user-name">${$(".input-bot-input").val()}</span><button class="remove-user" onclick=this.parentElement.remove()> - </button></div>`)
+            userarray.push($(".input-bot-input").val());
             $('.input-bot-input').val("");
+            console.log(userarray())
         });
 
 
