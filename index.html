@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faster Finger</title>
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
     <div class="main">
 
@@ -14,7 +16,7 @@
 
         <div class="left">
             <img src="images/Untitled design (3) 1.png" class="big-img">
-            <img src="images/logo (2).png" class="logo-img">    
+            <img src="images/logo (2).png" class="logo-img">
         </div>
 
 
@@ -22,15 +24,15 @@
         <div class="right">
             <h1>Start Your Quiz Now!</h1>
             <div class="input-upper-sec grid-box">
-                
+
                 <span class="input-general"><b>Instructions</b> </span>
                 <span class="input-general2">1.Their will be 10 Multiple Choice Questions<br>
-                                            2.Read questions carefully and answer correct<br>
-                                            3.Their will be a fixed time set for each question<br>
-                                            4.For every questions points will awarded<br>
-                                            5.leader board will be display on projector</span>
+                    2.Read questions carefully and answer correct<br>
+                    3.Their will be a fixed time set for each question<br>
+                    4.For every questions points will awarded<br>
+                    5.leader board will be display on projector</span>
 
-                <span class="input-general"><b>Read Instructions carefully</b> 
+                <span class="input-general"><b>Read Instructions carefully</b>
                 </span>
             </div>
 
@@ -42,9 +44,9 @@
                         <!-- <input type="text" required class="input-bot-input" placeholder="Enter player's name" >
                          -->
                         <div class="input-field">
-                            <input type="text" required class="input-inner"> 
+                            <input type="text" required class="input-inner">
                             <label>Enter Player Name</label>
-                          </div>
+                        </div>
                         <button class="input-add-btn-bot add-user">+</button>
                     </div>
                     <div class="user-list">
@@ -69,29 +71,61 @@
     </div>
 </body>
 
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 
 <script>
-    
-    $(document).ready(function() {
 
-        userarray=[];
-        $(".add-user").click(function(e) {
-            $(".user-list").append(`<div class="user"><span class="user-name">${$(".input-bot-input").val()}</span><button class="remove-user" onclick=this.parentElement.remove()> - </button></div>`)
-            
-            $('.input-bot-input').val("");
+    $(document).ready(function () {
+        userarray = [];
+        $(".add-user").click(function (e) {
+
+
+            if (!$('.input-inner').val()) {
+                alert("Input Feild Empty!!")
+            }
+            else {
+                $(".user-list").append(`<div class="input-main input-main2"><span class="user-name">${$(".input-inner").val()}</span>
+                        <button class="input-add-btn-bot del-us" onclick=this.parentElement.remove()> - </button></div>`)
+                userarray.push({ pname: $(".input-inner").val() });
+
+                $('.input-inner').val("");
+            }
+
+            console.log(userarray);
+
+
         });
 
 
 
-        $(document).on('click', '.del-user', function(e) {
+        $(document).on('click', '.del-us', function (e) {
             e.preventDefault();
             let row_item = $(this).parent();
+            // console.log(row_item.children('span').text());
+            deltex = row_item.children('span').text();
             $(row_item).remove();
-        });
 
+
+        });;
+
+        $(document).on('click', '.submitbtn', function (e) {
+            e.preventDefault();
+
+            var jsondata = JSON.stringify(userarray);
+            // console.log(jsondata);
+
+            // $.ajax({
+            //     url:'http://localhost/fasterfinger/insertnames.php',
+            //     type:"POST",
+            //     data:jsondata,
+            //     success:function(data){
+            //         message(data.message);
+            //     }
+            // });
+        });
 
     });
 </script>
+
 </html>
