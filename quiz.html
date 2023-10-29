@@ -1,102 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="quiz.css">
 </head>
+
 <body>
     <div class="div-main">
         <div class="div-grid">
-                        <div class="quiz-left">
-                            <img src="images/logo (2).png" alt="Image not Found" class="logo-img">
-                                <span class="quiz-question">Arrange the following in ascending order</span>
-                                    <div class="quiz-choices-outer">
-                                            <div class="quiz-choices">
-                                                    <span class="quiz-choice">a] 10asfasddd</span>
-                                                    <span class="quiz-choice">b] 10asdf</span>
-                                            </div>
-                                                <div class="quiz-choices">
-                                                        <span class="quiz-choice">a] 10asfasddd</span>
-                                                        <span class="quiz-choice">a] 10asdf</span>
-                                                </div>
-                                            </div>
-                                    
-                            <form class="quiz-form">
-                            <button type="submit" class="quiz-btn">
-                                <div class="btn-div">
-                                    <div class="quiz-letter">A</div>
-                                    <span class="quiz-frm-ques">a,b,c,d</span>
-                                </div>
-                            </button>
-                            
-                            <button type="submit" class="quiz-btn">
-                                <div class="btn-div">
-                                    <div class="quiz-letter">A</div>
-                                    <span class="quiz-frm-ques">a,b,c,d</span>
-                                </div>
-                            </button>
+            <div class="quiz-left">
+                <img src="images/logo (2).png" alt="Image not Found" class="logo-img">
+                <span class="quiz-question">Arrange the following in ascending order</span>
+                <div class="quiz-choices-outer">
+                    <div class="quiz-choices">
+                        <span class="quiz-choice optionone">a] 10asfasddd</span>
+                        <span class="quiz-choice optiontwo">b] 10asdf</span>
+                    </div>
+                    <div class="quiz-choices">
+                        <span class="quiz-choice optionthree">a] 10asfasddd</span>
+                        <span class="quiz-choice optionfour">a] 10asdf</span>
+                    </div>
+                </div>
 
-                            <button type="submit" class="quiz-btn">
-                                <div class="btn-div">
-                                    <div class="quiz-letter">A</div>
-                                    <span class="quiz-frm-ques">a,b,c,d</span>
-                                </div>
-                            </button>
-
-                            <button type="submit" class="quiz-btn">
-                                <div class="btn-div">
-                                    <div class="quiz-letter">A</div>
-                                    <span class="quiz-frm-ques">a,b,c,d</span>
-                                </div>
-                            </button>
-
-                            <input type="submit" class="submitbtn">
-                              
-                            </form>
+                <div class="quiz-form">
+                    <button type="submit" class="quiz-btn">
+                        <div class="btn-div">
+                            <div class="quiz-letter">A</div>
+                            <span class="quiz-frm-ques choiceone">a,b,c,d</span>
                         </div>
+                    </button>
 
-
-                        <div class="quiz-right">
-                            <h2 class="lead_header">Leaderboard</h2>
-                            <div class="headers">
-                                <span class='head_val'>Rank</span>
-                                <span class='head_val'>Name</span>
-                                <span class='head_val'>Points</span>
-                                <span class='head_val'>Seconds</span>
-
-                            </div>
-                            <div class="data">
-                                    <span class='data_val' id="rank">#1</span>
-                                    <span class='data_val' id="name">Kavish</span>
-                                    <span class='data_val' id="pts">15</span>
-                                    <span class='data_val' id="time">30</span>
-                            </div>
+                    <button type="submit" class="quiz-btn">
+                        <div class="btn-div">
+                            <div class="quiz-letter">B</div>
+                            <span class="quiz-frm-ques choicetwo">a,b,c,d</span>
                         </div>
+                    </button>
+
+                    <button type="submit" class="quiz-btn">
+                        <div class="btn-div">
+                            <div class="quiz-letter">C</div>
+                            <span class="quiz-frm-ques choicethree">a,b,c,d</span>
+                        </div>
+                    </button>
+
+                    <button type="submit" class="quiz-btn">
+                        <div class="btn-div">
+                            <div class="quiz-letter">D</div>
+                            <span class="quiz-frm-ques choicefour">a,b,c,d</span>
+                        </div>
+                    </button>
+
+                    <input type="submit" value="Next" class="submitbtn">
+
+                </div>
+            </div>
+
+
+            <div class="quiz-right">
+                <h2 class="lead_header">Leaderboard</h2>
+                <div class="headers">
+                    <span class='head_val'>Rank</span>
+                    <span class='head_val'>Name</span>
+                    <span class='head_val'>Points</span>
+                    <span class='head_val'>Seconds</span>
+
+                </div>
+                <div class="data">
+                    <span class='data_val' id="rank">#1</span>
+                    <span class='data_val' id="name">Kavish</span>
+                    <span class='data_val' id="pts">15</span>
+                    <span class='data_val' id="time">30</span>
+                </div>
+            </div>
 
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <script>
-            document.querySelectorAll('.quiz-btn').forEach(ele => {
-      ele.onclick = function(){
-        ele.classList.toggle("active-choice");
-        quiz = ele.firstElementChild;
-        quiz.firstElementChild.classList.toggle("active-letter")
-        
-      }
-    });
+        $(document).ready(function(){
+            next = 0;
+            $('.submitbtn').click(function(){
+                next++;
+                loadques();
+            })
+            function loadques(){
+                $.ajax({
+                    url:'http://localhost/fasterfinger/fetch-all.php',
+                    type: "GET",
+                    success: function(data){
+                        
+                            console.log(data);
+                            
+                            
+                                $('.quiz-question').text(data[next].question);
+                                $('.optionone').text(data[next].opt1);
+                                $('.optiontwo').text(data[next].opt2);
+                                $('.optionthree').text(data[next].opt3);
+                                $('.optionfour').text(data[next].opt4);
+
+                                $('.choiceone').text(data[next].choice1);
+                                $('.choicetwo').text(data[next].choice2);
+                                $('.choicethree').text(data[next].choice3);
+                                $('.choicefour').text(data[next].choice4);
+                        
+                    }
+                    
+                });
+            }
+            loadques();
+            
+        })
+
+        document.querySelectorAll('.quiz-btn').forEach(ele => {
+            ele.onclick = function () {
+                ele.classList.toggle("active-choice");
+                quiz = ele.firstElementChild;
+                quiz.firstElementChild.classList.toggle("active-letter")
+
+            }
+        });
 
 
-    document.querySelectorAll('.submitbtn').forEach(ele => {
-      ele.onclick = function(){
-        ele.classList.toggle("active-choice-sub");
-        
-        
-      }
-    });
+        document.querySelectorAll('.submitbtn').forEach(ele => {
+            ele.onclick = function () {
+                ele.classList.toggle("active-choice-sub");
+
+
+            }
+        });
     </script>
 </body>
+
 </html>

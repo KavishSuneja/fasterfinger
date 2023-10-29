@@ -71,23 +71,26 @@
     </div>
 </body>
 
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 <script>
+    let userarray = [];
 
-    $(document).ready(function () {
-        userarray = [];
-        $(".add-user").click(function (e) {
+    function removeItem(e) {
+        console.log($(e.parentElement.parentElement.child));
+    }
+    $(document).ready(function() {
+        $(".add-user").click(function(e) {
 
 
             if (!$('.input-inner').val()) {
                 alert("Input Feild Empty!!")
-            }
-            else {
+            } else {
                 $(".user-list").append(`<div class="input-main input-main2"><span class="user-name">${$(".input-inner").val()}</span>
-                        <button class="input-add-btn-bot del-us" onclick=this.parentElement.remove()> - </button></div>`)
-                userarray.push({ pname: $(".input-inner").val() });
+                        <button class="input-add-btn-bot del-us" onclick=this.parentElement.remove();removeItem(this);> - </button></div>`)
+                userarray.push({
+                    pname: $(".input-inner").val()
+                });
 
                 $('.input-inner').val("");
             }
@@ -99,7 +102,7 @@
 
 
 
-        $(document).on('click', '.del-us', function (e) {
+        $(document).on('click', '.del-us', function(e) {
             e.preventDefault();
             let row_item = $(this).parent();
             // console.log(row_item.children('span').text());
@@ -109,7 +112,7 @@
 
         });;
 
-        $(document).on('click', '.submitbtn', function (e) {
+        $(document).on('click', '.submitbtn', function(e) {
             e.preventDefault();
 
             var jsondata = JSON.stringify(userarray);
