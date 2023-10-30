@@ -39,6 +39,38 @@
 
 
             <div class="buttom-data-sec grid-box">
+                <select type="select" name="batch" id="batch-sel">
+                    <option value="batch1">Batch 1</option>
+                    <option value="batch2">Batch 2</option>
+                    <option value="batch3">Batch 3</option>
+                    <option value="batch4">Batch 4</option>
+                    <option value="batch5">Batch 5</option>
+                    <option value="batch6">Batch 6</option>
+                    <option value="batch7">Batch 7</option>
+                    <option value="batch8">Batch 8</option>
+                    <option value="batch9">Batch 9</option>
+                    <option value="batch10">Batch 10</option>
+                    <option value="batch11">Batch 11</option>
+                    <option value="batch12">Batch 12</option>
+                    <option value="batch13">Batch 13</option>
+                    <option value="batch14">Batch 14</option>
+                    <option value="batch15">Batch 15</option>
+                    <option value="batch16">Batch 16</option>
+                    <option value="batch17">Batch 17</option>
+                    <option value="batch18">Batch 18</option>
+                    <option value="batch19">Batch 19</option>
+                    <option value="batch20">Batch 20</option>
+                    <option value="batch21">Batch 21</option>
+                    <option value="batch22">Batch 22</option>
+                    <option value="batch23">Batch 23</option>
+                    <option value="batch24">Batch 24</option>
+                    <option value="batch25">Batch 25</option>
+                    <option value="batch26">Batch 26</option>
+                    <option value="batch27">Batch 27</option>
+                    <option value="batch28">Batch 28</option>
+                    <option value="batch29">Batch 29</option>
+                    <option value="batch30">Batch 30</option>
+                </select>
                 <div class="input-main-main">
                     <div class="input-main">
                         <!-- <input type="text" required class="input-bot-input" placeholder="Enter player's name" >
@@ -75,21 +107,26 @@
 
 <script>
     let userarray = [];
-
-    function removeItem(e) {
-        console.log($(e.parentElement.parentElement.child));
-    }
+    let batch = "";
     $(document).ready(function() {
+        batch = $('#batch-sel').val();
+        $('select').click(function(e){
+            batch = $('#batch-sel').val();
+            console.log(batch);
+            // console.log("hi");
+        });
+
         $(".add-user").click(function(e) {
 
-
+            
             if (!$('.input-inner').val()) {
                 alert("Input Feild Empty!!")
             } else {
                 $(".user-list").append(`<div class="input-main input-main2"><span class="user-name">${$(".input-inner").val()}</span>
-                        <button class="input-add-btn-bot del-us" onclick=this.parentElement.remove();removeItem(this);> - </button></div>`)
+                        <button class="input-add-btn-bot del-us" > - </button></div>`)
                 userarray.push({
-                    pname: $(".input-inner").val()
+                    pname: $(".input-inner").val(),
+                    batchno: batch
                 });
 
                 $('.input-inner').val("");
@@ -100,23 +137,29 @@
 
         });
 
-
+       
 
         $(document).on('click', '.del-us', function(e) {
             e.preventDefault();
             let row_item = $(this).parent();
             // console.log(row_item.children('span').text());
             deltex = row_item.children('span').text();
-            $(row_item).remove();
+            for(a=0; a<userarray.length; a++){
+                if(userarray[a].pname == deltex){
+                    delindex = userarray.indexOf(userarray[a]);
+                    userarray.splice(delindex,1);
+                    console.log(userarray);
+                    $(row_item).remove();
+                }
+            }
 
 
         });;
 
         $(document).on('click', '.submitbtn', function(e) {
             e.preventDefault();
-
             var jsondata = JSON.stringify(userarray);
-            // console.log(jsondata);
+            console.log(jsondata);
 
             // $.ajax({
             //     url:'http://localhost/fasterfinger/insertnames.php',
@@ -124,6 +167,10 @@
             //     data:jsondata,
             //     success:function(data){
             //         message(data.message);
+
+            //         if(data.message == 'Player name inserted'){
+            //             console.log("success")
+            //         }
             //     }
             // });
         });
