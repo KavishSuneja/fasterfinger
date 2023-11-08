@@ -40,7 +40,7 @@
 }
 select{
     
-    width: 150px;
+    width: 170px;
     height: 48px;
     border-radius: 6px;
     font-size: 22px;
@@ -53,13 +53,15 @@ select{
     /* margin-top:-5px ; */
     font-family: 'Quantico';
     -webkit-appearance: none;
+    font-weight: bold;
+    text-align: center;
   }
   option{
     padding: 10px;
     color: black;
   }
   .team_code{
-    width: 150px;
+    width: 170px;
     height: 48px;
     border-radius: 6px;
     font-size: 16px;
@@ -75,16 +77,21 @@ select{
 
     
   }
+  .batch_id{
+    height: 55px;
+  }
   .team_code::placeholder{
     font-weight: 500;
     color: #000000;
+    font-family: 'Ubuntu';
+    text-align: center;
   }
 .input-main {
     display: flex;
     justify-content: left;
     align-items: center;
     /* border: 1px solid black; */
-   margin-top: 25px;
+   margin-top: 15px;
    
     
 }
@@ -109,8 +116,8 @@ select{
   }
   .input-field input{
     width: 300px;
-    height: 45px;
-    border-radius: 6px;
+    height: 54px;
+    border-radius: 15px;
     font-size: 18px;
     padding: 0 15px;
     border: 2px solid #000;
@@ -118,6 +125,14 @@ select{
     color: black;
     outline: none;
     margin-right:  5px;
+    border: none;
+    background: #EFEFEF;
+  }
+  .input-field input::placeholder{
+    font-weight: 500;
+    color: #000000;
+    font-family: 'Ubuntu';
+    text-align: left;
   }
   .input-field label{
     position: absolute;
@@ -128,6 +143,10 @@ select{
     font-size: 18px;
     pointer-events: none;
     transition: 0.3s;
+    font-weight: 500;
+    color: #000000;
+    font-family: 'Ubuntu';
+    text-align: left;
   }
   input:focus{
     border: 2px solid #FF6400;
@@ -136,10 +155,10 @@ select{
   input:valid ~ label{
     top: 0;
     left: 15px;
-    font-size: 16px;
-    padding: 0 2px;
-    background: #fff;
-    color: #FF6400;
+    font-size: 15px;
+    padding: 0 5px;
+    background: #FF6400;
+    color: #fff;
   }
   .submitbtn {
     border: 0px solid red;
@@ -148,12 +167,12 @@ select{
     align-self: flex-end;
     margin-right: 30px;
     border-radius: 50px;
-    background: #000000;
+    background: #1E1E1E;
     /* FONTS */
     font-family: 'Quantico', sans-serif;
-    font-size: 20px;
+    font-size: 25px;
     color: #fefefe;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 .add-user:hover {
     background-color: #fff;
@@ -180,65 +199,39 @@ select{
     border: 2px solid #8b0000;
     transition: all 0.2s;
 }
-
-
-
-
-
-
+.table-wrapper table {
+  border-radius:10px;
+  border-collapse: collapse;
+  text-align: center;
+  width:100%;
  
-  .table-wrapper table {
-    border-radius:10px;
-    border-collapse: collapse;
-    text-align: center;
-    width:100%;
-   
-    /* border: 1px solid black; */
-  }
-  .container{
-    border-radius:20px;
-    /* border: 1px solid black; */
-    margin-top: 100px;
-    width:80%;
-    position: relative;
-    left: 10%;
-    padding-bottom: 50px;
-    font-family: 'Ubuntu';
-  }
-  .table-wrapper table th,
-  .table-wrapper table td {
-    padding: 15px 25px;
-    text-align: left;
-    /* border: 2px solid black; */
-  }
-  
-  .table-wrapper table th {
-    color: white;
-    background: #FF6901;
-    text-align: left;
-  }
-  .table-wrapper table tbody tr{
-    background: #E8E8E8;
-  }
-  .table-wrapper table tbody tr:nth-of-type(even) > * {
-    background: #F4F4F4;
-  }
-  
-/* th:first-child{
-    border-top-left-radius: 15px;
+  /* border: 1px solid black; */
 }
-th:last-child{
-    border-top-right-radius: 15px;
-} */
-/* tr:first-child th:first-child {
-    border-top-left-radius: 10px;
-  }
-  tr:first-child th:last-child {
-    border-top-right-radius: 10px;
-  }
-  tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
-  }
-  tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
-  } */
+.container{
+  border-radius:20px;
+  /* border: 1px solid black; */
+  margin-top: 100px;
+  width:80%;
+  position: relative;
+  left: 10%;
+  padding-bottom: 50px;
+  font-family: 'Ubuntu';
+}
+.table-wrapper table th,
+.table-wrapper table td {
+  padding: 15px 25px;
+  text-align: left;
+  /* border: 2px solid black; */
+}
+
+.table-wrapper table th {
+  color: white;
+  background: #FF6901;
+  text-align: left;
+}
+.table-wrapper table tbody tr{
+  background: #E8E8E8;
+}
+.table-wrapper table tbody tr:nth-of-type(even) > * {
+  background: #F4F4F4;
+}
