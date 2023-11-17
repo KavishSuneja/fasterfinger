@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player 1</title>
+    <link rel="icon" href="Logo1.png" type="image/x-icon">
+    <link rel="stylesheet" href="player_first.css">
+</head>
+
+<body>
+    <div class="main">
+
+
+
+
+        <div class="left">
+            <img src="images/man.png" class="big-img">
+            <img src="images/Logo.png" class="logo-img">
+        </div>
+
+
+
+        <div class="right">
+
+            <div class="input-upper-sec grid-box">
+
+                <span class="input-general"><b>Instructions</b> </span><br>
+                <span class="input-general2">1.Their will be 10 Multiple Choice Questions<br><br>
+                                            2.Read questions carefully and answer correct<br><br>
+                                            3.Their will be a fixed time set for each question<br><br>
+                                            4.For every questions points will awarded<br><br>
+                                            5.leader board will be display on projector</span><br>
+
+                <span class="input-general"><b>Read Instructions carefully</b> 
+                </span>
+            </div>
+
+            <p id="waiting">Waiting for the Host to Start</p>
+        </div>
+
+        <div class="last">
+            <div class="input-main">
+                <div class="input-field">
+                    <input type="text" required class="input-inner">
+                    <label>Enter Team Code</label>
+                </div>
+                <button class="input-add-btn-bot add-user" onclick="redirect()">Join Team</button>
+            </div>
+            <h2 class="user-head">Select Player</h2><br>
+            <ol class="playerList"><br>
+                <!-- <li> <span class="user-data">Player Name</span></li><br> -->
+            </ol>
+
+        </div>
+
+
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        function redirect() {
+            console.log(document.querySelector(".input-inner").value);
+            $.ajax({
+                method: "GET",
+                url: "manage.php",
+                data: {
+                    team: document.querySelector(".input-inner").value,
+                    for: "details"
+                },
+                success: (data) => {
+                    const players = JSON.parse(data);
+                    players.forEach((val, key) => {
+                        console.log(val);
+                        $('.playerList').append('<li> <a class="user-data" href="player.php?team=' + val.teamcode + '&uid=' + key + '">' + val.name + '</a></li><br>')
+                    })
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>

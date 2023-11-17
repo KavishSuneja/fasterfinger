@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="main">
         <div class="img-div">
             <div class="contents">
-                
+
                 <h1 class="start_head">Start Your Quiz Now</h1>
                 <div class="but-con">
                     <div class="batch_id">
@@ -51,42 +53,41 @@
                     </div>
 
                     <div class="input-main">
-                      
                         <div class="input-field">
                             <input type="text" required class="input-inner">
                             <label>Enter Player's Name</label>
                         </div>
                         <button class="input-add-btn-bot add-user">+</button>
                     </div>
-                        
-                    
-                </div>
-                <input type="submit" class="submitbtn" value="Start Quiz">
-           
-            </div>
-        </div>
-        <div class="container">
 
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Team Code</th>
-                    <th>Batch Number</th>
-                    <th>Player Name</th>
-                    <th>Remove Player</th>
-                   
-            
-                  </tr>
-                </thead>
-                <tbody>
-                 
-                </tbody>
-              </table>
+
+                </div>
+                <button type="button" class="submitbtn" name="submit">Start Quiz</button>
+
+                </for>
             </div>
-          
-          
-    </div>
+            <div class="container">
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Team Code</th>
+                                <th>Batch Number</th>
+                                <th>Player Name</th>
+                                <th>Remove Player</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
@@ -96,34 +97,33 @@
 <script>
     let userarray = [];
     let batch = "";
-    let teamcode =  "";
+    let teamcode = "";
     $(document).ready(function() {
-       //to check if record is there in table
-        var secondTableRowExists = $("table tr:eq(1)").length > 0;
+        //to check if record is there in table
+        $(".container").css("display", $("table tr:eq(1)").length > 0 ? "block" : "none");
 
-        if (!secondTableRowExists) {
-            $(".container").css("display", "none");
-        } 
-
-        batch = $('#batch-sel').val();
+        // batch = $('#batch-sel').val();
         //teamcode new update
         //teamcode wil only be set after setting of batch
-        teamcode = $('.team_code').val();
-       
-        $('select').click(function(e){
-            batch = $('#batch-sel').val();
-            //teamcode new update
-            teamcode = $('.team_code').val();
-            
-        });
-        
+        // teamcode = $('.team_code').val();
+
+        // $('select').click(function(e) {
+        //     batch = $('#batch-sel').val();
+        //     //teamcode new update
+        //     teamcode = $('.team_code').val();
+        // });
+
         $(".add-user").click(function(e) {
 
-            
+
             if (!$('.input-inner').val()) {
                 alert("Input Feild Empty!!")
             } else {
-                //add user data in table nad also pushing teamcode , name , batchno in array
+                batch = $('#batch-sel').val();
+                teamcode = $('.team_code').val();
+                $('#batch-sel').attr("disabled", "true")
+                $('.team_code').attr("disabled", "true")
+                    //add user data in table nad also pushing teamcode , name , batchno in array
                 $("tbody").append(`<tr>
                    
                    <td>${teamcode}</td>
@@ -134,7 +134,7 @@
                 userarray.push({
                     pname: $(".input-inner").val(),
                     batchno: batch,
-                    teamcode:teamcode
+                    teamcode: teamcode
                 });
 
                 $('.input-inner').val("");
@@ -147,7 +147,7 @@
 
         });
 
-       
+
 
         $(document).on('click', '.del-us', function(e) {
             e.preventDefault();
@@ -155,18 +155,45 @@
             let row_item = $(this).parent().parent();
             deltex = row_item.children('#remove_user_val').text();
             // checking and deleting record from userarray
-             for(a=0; a<userarray.length; a++){
-                 if(userarray[a].pname == deltex){
-                     delindex = userarray.indexOf(userarray[a]);
-                     userarray.splice(delindex,1);
-                     console.log(userarray);
-                     $(row_item).remove();
-                    
+            for (a = 0; a < userarray.length; a++) {
+                if (userarray[a].pname == deltex) {
+                    delindex = userarray.indexOf(userarray[a]);
+                    userarray.splice(delindex, 1);
+                    console.log(userarray);
+                    $(row_item).remove();
+
                 }
             }
 
 
         });;
+
+        $(".submitbtn").on("click", () => {
+            // console.log(userarray);
+            // console.log(batch);
+            // console.log(teamcode);
+            const data = {
+                    names: userarray,
+                    batch,
+                    teamcode,
+                    submit: "true"
+                }
+                // const body = JSON.stringify(data)
+            $.ajax({
+                url: "insertUsers.php",
+                type: "POST",
+                data,
+                success: (data) => {
+                    if (data == "Success") {
+                        alert("Starting!")
+                        location.href = "quiz.php?team=" + teamcode
+                    } else {
+                        console.log("Failed!");
+                    }
+                }
+            })
+        })
+
         // kavish needs to do code from here
 
 
