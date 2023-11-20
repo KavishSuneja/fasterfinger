@@ -33,6 +33,13 @@
         .quiz-btn-radio {
             display: none;
         }
+
+        .div-grid{
+            display: block;
+        }
+        .submitbtn{
+            align-self: flex-end;
+        }
     </style>
 </head>
 
@@ -119,57 +126,102 @@
             $('#opt4').val(data.choice4);
         }
         let n = 0;
-        let lastQues=false;
         const constAns = 1;
         let timeTaken = 1;
+        let startTime = new Date();
+        let endTime = new Date();
         $(document).ready(function(){
             next(questions[n])
             $('.submitbtn').click(function(){
+                let endTime = new Date();
+                timeTaken = 400 - (Math.floor( ((endTime - startTime) / 100) ));
+                $('.submitbtn').css("display","none")
                 $.ajax({
                     method:"GET",
                     url:"manage.php",
                     data:{
                         team:"<?php echo $_GET['team']; ?>",
-                        for:"complete",
+                        uid:"<?php echo $_GET['uid']; ?>",
+                        for:"submit",
+                        pts:$('input[name="age"]:checked').val()==questions[n].correctans ? constAns * timeTaken : 0,
+                        time:(Math.floor(((endTime - startTime) / 100))/10)
                     },
                     success:(data)=>{
-                        console.log(data);
-                        if(data=="0" && n>0){
-                            alert("everyone is not complete yet!");
-                        }else{
-                            n++;
-                            ansArray.push($('input[name="age"]:checked').val());
-                            $.ajax({
-                                method:"GET",
-                                url:"manage.php",
-                                data:{
-                                    team:"<?php echo $_GET['team']; ?>",
-                                    uid:"<?php echo $_GET['uid']; ?>",
-                                    for:"submit",
-                                    pts:$('input[name="age"]:checked').val()==questions[n-1].correctans ? constAns * timeTaken : 0
-                                },
-                                success:(data)=>{
-                                    if(data=="failed"){
-                                        alert("error")
-                                    }
-                                }
-                            })
-                            if(lastQues){
-                                console.log("submitted");
-                                console.log(ansArray);
-                                alert("ended")
-                                return
-                            }
-                            if(!questions[n+1]){
-                                lastQues=true;
-                                $('.submitbtn').val("Submit")
-                            }
-                            next(questions[n])
+                        if(data=="failed"){
+                            alert("error")
                         }
                     }
                 })
-            })
+            });
+            setInterval(function(){
+                $.ajax({
+                    method:"GET",
+                    url:"manage.php",
+                    data:{
+                        team:"<?php echo $_GET['team']; ?>",
+                        for:"getQno",
+                    },
+                    success:(data)=>{
+                        if(data>n){
+                            console.log("Next Question!");
+                            n++;
+                            next(questions[n]);
+                            startTime = new Date();
+                            $(".submitbtn").css("display","block")
+                        }
+                    }
+                })
+            },1000)
         })
+        // $(document).ready(function(){
+        //     next(questions[n])
+        //     $('.submitbtn').click(function(){
+        //         $.ajax({
+        //             method:"GET",
+        //             url:"manage.php",
+        //             data:{
+        //                 uid:"<?php /*echo $_GET['uid']; ?>",
+        //                 team:"<?php echo $_GET['team']; ?>",
+        //                 for:"complete",
+        //             },
+        //             success:(data)=>{
+        //                 console.log(data);
+        //                 if(data=="0" && n>0){
+        //                     alert("everyone is not complete yet!");
+        //                 }else{
+        //                     n++;
+        //                     ansArray.push($('input[name="age"]:checked').val());
+        //                     $.ajax({
+        //                         method:"GET",
+        //                         url:"manage.php",
+        //                         data:{
+        //                             team:"<?php echo $_GET['team']; ?>",
+        //                             uid:"<?php echo $_GET['uid'];*/ ?>",
+        //                             for:"submit",
+        //                             pts:$('input[name="age"]:checked').val()==questions[n-1].correctans ? constAns * timeTaken : 0
+        //                         },
+        //                         success:(data)=>{
+        //                             if(data=="failed"){
+        //                                 alert("error")
+        //                             }
+        //                         }
+        //                     })
+        //                     if(lastQues){
+        //                         console.log("submitted");
+        //                         console.log(ansArray);
+        //                         alert("ended")
+        //                         return
+        //                     }
+        //                     if(!questions[n+1]){
+        //                         lastQues=true;
+        //                         $('.submitbtn').val("Submit")
+        //                     }
+        //                     next(questions[n])
+        //                 }
+        //             }
+        //         })
+        //     })
+        // })
     </script>
 </body>
 

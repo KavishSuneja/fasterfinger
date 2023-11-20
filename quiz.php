@@ -2,19 +2,12 @@
 <?php
     require_once "conn.php";
     $team = $_GET['team'];
-    $sql = "SELECT * FROM playerdata WHERE teamcode='$team';";
+    $sql = "SELECT name as 'playername',points,time FROM playerdata WHERE teamcode='$team';";
     $res = mysqli_query($conn,$sql);
-    $playerData = [];
-    $batch = "";
-    while($row = mysqli_fetch_assoc($res)){
-        array_push($playerData,$row['name']);
-        $batch = $row['batch'];
-    }
-    // print_r($playerData);
-    $sql = "SELECT * FROM questions WHERE batch='$batch';";
+    $playerData = mysqli_fetch_all($res,MYSQLI_ASSOC);
+    $sql = "SELECT DISTINCT questions.batch,questions.qno,questions.question,questions.opt1,questions.opt2,questions.opt3,questions.opt4,questions.choice1,questions.choice2,questions.choice3,questions.choice4,questions.correctans FROM questions LEFT JOIN playerdata ON questions.batch=playerdata.batch WHERE playerdata.teamcode='$team'";
     $res = mysqli_query($conn,$sql);
     $questionData = mysqli_fetch_all($res,MYSQLI_ASSOC);
-    // print_r($questionData);
 ?>
 <!-- </pre> -->
 <!DOCTYPE html>
@@ -94,45 +87,63 @@
                     </div></label>
                     </div><br><br>
                     <!-- <input type="submit" value="Show" class="showbtn"> -->
-                    <input type="submit" value="Show" class="showbtn">
-                    <input type="submit" value="Next" class="submitbtn">
-                </div>
-            </div>
-
-
-            <div class="quiz-right">
-                <h2 class="lead_header">Leaderboard</h2>
-                <div class="headers">
-                    <span class='head_val'>Rank</span>
-                    <span class='head_val'>Name</span>
-                    <span class='head_val'>Points</span>
-                    <span class='head_val'>Seconds</span>
-
-                </div>
-                
-                <?php
-                    /* for($i=0;$i<count($playerData);$i++){
-                ?>
-                    <div class="data">
-                        <span class='data_val' id="rank" class="<?php echo "rank_".$i; ?>">#1</span>
-                        <span class='data_val' id="name"><?php echo $playerData[$i]['']; ?></span>
-                        <span class='data_val' id="pts" <?php echo "pts_".$i; ?>><?php echo $playerData[$i]; ?></span>
-                        <span class='data_val' id="time" <?php echo "time_".$i; ?>>0</span>
+                    <div class="submit-div">
+                        <input type="submit" value="Show" class="showbtn">
+                        <input type="submit" value="Next" class="submitbtn">
                     </div>
-                <?php
-                    } */
-                ?>
+                </div>
+                <div class="quiz-right">
+                    <h2 class="lead_header">Leaderboard</h2>
+                    <div class="headers">
+                        <span class='head_val'>Rank</span>
+                        <span class='head_val'>Name</span>
+                        <span class='head_val'>Points</span>
+                        <span class='head_val'>Seconds</span>
+
+                    </div>
+                    <div class="data_outer"></div>
+                </div>
             </div>
-
-
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <script>
         let questions = <?php echo json_encode($questionData); ?>;
+
+        let leadarray = <?php echo json_encode($playerData); ?>;
+
+
+      function upload_leaderboard(){
+            leadarray.sort(function (a, b) {
+                // First, compare points
+                if (b.points !== a.points) {
+                    return b.points - a.points;
+                }
+                // If points are the same, compare time
+                return a.time - b.time;
+            });
+            for(i=0; i<leadarray.length; i++){
+                $('.data_outer').append(`<div class="data">
+                    <span class='data_val' id="rank" >${i+1}</span>
+                    <span class='data_val' id="name">${leadarray[i]['playername']}</span>
+                    <span class='data_val' id="pts">${leadarray[i]['points']}</span>
+                    <span class='data_val' id="time" >${leadarray[i]['time']}</span>
+                </div>`)
+        
+            }
+        }
         function next(data){
             console.log(data);
+            $.ajax({
+                method:"GET",
+                url:"manage.php",
+                data:{
+                    for:"setQno",
+                    team:"<?php echo $_GET['team']; ?>",
+                    qno:n
+                },
+            })
             $(".quiz-btn").each((key,element)=>{
                 $(element).css("background-color","black");
             })
@@ -174,6 +185,7 @@
             });
         })
         $(document).ready(function(){
+            upload_leaderboard(leadarray);
             next(questions[0])
             setInterval(()=>{
                 $.ajax({
@@ -188,6 +200,20 @@
                         if(data=='1' && waiting==true){
                             waiting=false;
                             alert("everyone has completed");
+                            $.ajax({
+                                method:"GET",
+                                url:"manage.php",
+                                data:{
+                                    for:"leaderboard",
+                                    team:"<?php echo $_GET['team']; ?>"
+                                },
+                                success:(data)=>{
+                                    console.log(JSON.parse(data));
+                                    leadarray=JSON.parse(data);
+                                    $(".data_outer").html(" ")
+                                    upload_leaderboard(leadarray);
+                                }
+                            })
                         }else if(data=='0'){
                             waiting=true;
                         }

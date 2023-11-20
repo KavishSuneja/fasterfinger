@@ -18,13 +18,13 @@ body {
     /* border: 1px solid red; */
     width: 97%;
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
     column-gap: 10px;
     position: relative;
     left: 50%;
-    top: 30px;
+    top: 50vh;
     height: 700px;
-    transform: translateX(-50%);
+    transform: translate(-50%, -55%);
 }
 
 .quiz-left {
@@ -161,12 +161,18 @@ body {
     color: #fefefe;
 }
 
-.submitbtn {
+.submit-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.submitbtn,
+.showbtn {
     border: 0px solid red;
     height: 50px;
     width: 150px;
-    align-self: flex-end;
-    margin-right: 30px;
+    /* align-self: flex-end; */
+    /* margin-right: 30px; */
     border-radius: 50px;
     background: linear-gradient(#FF6400, #FFAE15);
     /* FONTS */
@@ -391,7 +397,7 @@ body {
         column-gap: 10px;
         position: relative;
         left: 50%;
-        top: 0px;
+        top: 30px;
         height: 100vh;
         margin: 20px 0px;
         transform: translateX(-50%);
@@ -587,6 +593,15 @@ body {
     text-align: center;
 }
 
+.data_outer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
 .data {
     border: 3px solid #DDDDDD;
     height: 50px;
@@ -602,6 +617,7 @@ body {
     font-family: 'Quantico', sans-serif;
     color: #000000;
     font-size: 25px;
+    margin-left: 20px;
 }
 
 #rank,
