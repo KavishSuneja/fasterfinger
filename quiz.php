@@ -36,16 +36,16 @@
         <div class="quiz-left">
                 <img src="images/logo (2).png" alt="Image not Found" class="logo-img">
                 <span class="quiz-question">Arrange the following in ascending order</span>
-                <div class="quiz-choices-outer">
-                    <div class="quiz-choices">
-                        <span class="quiz-choice optionone">a] 10asfasddd</span>
-                        <span class="quiz-choice optiontwo">b] 10asdf</span>
+                    <div class="quiz-choices-outer">
+                        <div class="quiz-choices">
+                            <span class="quiz-choice optionone">a] 10asfasddd</span>
+                            <span class="quiz-choice optiontwo">b] 10asdf</span>
+                        </div>
+                        <div class="quiz-choices">
+                            <span class="quiz-choice optionthree">a] 10asfasddd</span>
+                            <span class="quiz-choice optionfour">a] 10asdf</span>
+                        </div>
                     </div>
-                    <div class="quiz-choices">
-                        <span class="quiz-choice optionthree">a] 10asfasddd</span>
-                        <span class="quiz-choice optionfour">a] 10asdf</span>
-                    </div>
-                </div>
 
                 <div class="quiz-form">
                     <!-- <input type="radio" id="opt1" name="age" value="" class="quiz-btn-radio"> -->

@@ -4,7 +4,6 @@
 * {
     margin: 0;
     padding: 0;
-    /* border: 1px solid black; */
 }
 
 body {
@@ -18,18 +17,7 @@ body {
     /* border: 5px solid black; */
     /* height: 200vh; */
 }
-.div-grid {
-    /* border: 1px solid red; */
-    width: 97%;
-    display: grid;
-    grid-template-columns: 70% 30%;
-    column-gap: 10px;
-    position: relative;
-    left: 50%;
-    margin: 30px 0px;
-    
-    transform: translateX(-50%);
-}
+
 
 .quiz-left {
     /* border: 1px solid red; */
@@ -40,6 +28,10 @@ body {
     background-color: #fefefe;
     border-radius: 20px;
     padding-bottom: 30px;
+    width: 97%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 30px 0px;
 }
 
 .logo-img {
@@ -55,15 +47,18 @@ body {
     border-image: linear-gradient(to right, #FF6400, #FFAE15);
     border-image-slice: 1;
     border-radius: 20px;
-    position: relative;
+     position: relative;
+     top: 10px;
+     width: 65%;
     left: 50%;
-    top: 10px;
-    transform: translateX(-50%);
-    width: 65%;
     height: 150px;
-    display: flex;
+    transform: translateX(-50%);
     align-items: center;
-    /* FONTS */
+    
+    justify-content: center;
+    display: flex;
+    /* */
+    
     font-family: 'Paytone One', sans-serif;
     font-size: 40px;
     text-align: center;
@@ -96,6 +91,7 @@ body {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
+    /* border: 1px solid black; */
 }
 
 .quiz-choice {
@@ -168,7 +164,7 @@ body {
 
 .submitbtn , .showbtn {
     border: 0px solid red;
-    height: 50px;
+    height: 60px;
     width: 150px;
     align-self: flex-end;
     margin-right: 30px;
@@ -178,15 +174,10 @@ body {
     font-family: 'Quantico', sans-serif;
     font-size: 20px;
     color: #fefefe;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
-.submit-div{
-    /* border: 1px solid black; */
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    height: 50px;
-}
+
 .submitbtn:hover,
 .submitbtn:hover:click {
     background: linear-gradient(to top, #FF6400, #FFAE15);
@@ -199,29 +190,7 @@ body {
     * {
         margin: 0;
         padding: 0;
-        
         /* border: 1px solid black; */
-    }
-    .submitbtn , .showbtn {
-        border: 0px solid red;
-        height: 50px;
-        width: 150px;
-        align-self: flex-end;
-        margin: 0px 5px;
-        border-radius: 50px;
-        background: linear-gradient(#FF6400, #FFAE15);
-        /* FONTS */
-        font-family: 'Quantico', sans-serif;
-        font-size: 20px;
-        color: #fefefe;
-        margin-top: 20px;
-    }
-    .submit-div{
-        /* border: 1px solid black; */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
     }
     body {
         height: 100vh;
@@ -229,13 +198,6 @@ body {
         background: linear-gradient(#FF6400, #FFAE15);
         background-repeat: no-repeat;
         background-size: cover;
-    }
-    .submit-div{
-        /* border: 1px solid black; */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
     }
     .div-main {
         /* border: 1px solid red; */
@@ -322,7 +284,6 @@ body {
     }
     .quiz-choice {
         padding: 0px 10px 0px 0px;
-        font-size: 20px;
     }
     .quiz-form {
         /* border: 1px solid red; */
@@ -382,7 +343,7 @@ body {
         font-size: 20px;
         color: #fefefe;
     }
-    /* .submitbtn, .showbtn {
+    .submitbtn {
         border: 0px solid red;
         height: 60px;
         width: 150px;
@@ -391,11 +352,11 @@ body {
         border-radius: 50px;
         background: linear-gradient(#FF6400, #FFAE15);
         margin-bottom: 50px;
-       
+        /* FONTS */
         font-family: 'Quantico', sans-serif;
         font-size: 20px;
         color: #fefefe;
-    } */
+    }
     .quiz-right {
         /* border: 1px solid green; */
         background-color: #fefefe;
@@ -405,55 +366,37 @@ body {
 }
 
 @media screen and (min-width:701px) and (max-width:1000px) {
-    
-   
     * {
         margin: 0;
         padding: 0;
         /* border: 1px solid black; */
     }
-    .submitbtn , .showbtn {
-        border: 0px solid red;
-        height: 50px;
-        width: 150px;
-        align-self: flex-end;
-        margin: 0px 5px;
-        border-radius: 50px;
-        background: linear-gradient(#FF6400, #FFAE15);
-        /* FONTS */
-        font-family: 'Quantico', sans-serif;
-        font-size: 20px;
-        color: #fefefe;
-        margin-top: 20px;
-    }
-    .submit-div{
-        /* border: 1px solid black; */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
-    }
     body {
-        height: auto;
+        height: 100vh;
         width: 100%;
         background: linear-gradient(#FF6400, #FFAE15);
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .div-main{
-        /* border: 5px solid black; */
-        /* height: 200vh; */
+    .div-main {
+        /* border: 1px solid    red; */
+        height: auto;
+        background: linear-gradient(#FF6400, #FFAE15);
+        display: flex;
+        align-items: center;
     }
     .div-grid {
         /* border: 1px solid red; */
         width: 97%;
         display: grid;
-        grid-template-columns: 100%;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
         column-gap: 10px;
         position: relative;
         left: 50%;
-        margin: 30px 0px;
-        
+        top: 0px;
+        height: 100vh;
+        margin: 20px 0px;
         transform: translateX(-50%);
     }
     .quiz-left {
@@ -583,7 +526,21 @@ body {
         font-size: 20px;
         color: #fefefe;
     }
-    
+    .submitbtn {
+        border: 0px solid red;
+        height: 70px;
+        width: 200px;
+        align-self: center;
+        margin-right: 0px;
+        border-radius: 50px;
+        background: linear-gradient(#FF6400, #FFAE15);
+        margin-bottom: 10px;
+        margin-top: 20px;
+        /* FONTS */
+        font-family: 'Quantico', sans-serif;
+        font-size: 25px;
+        color: #fefefe;
+    }
     .quiz-right {
         /* border: 1px solid green; */
         background-color: #fefefe;
@@ -630,15 +587,9 @@ body {
     color: #999999;
     font-size: 15px;
     font-weight: 600;
-    text-align: left;
+    text-align: center;
 }
-.data_outer{
-    width: 100%;
-    /* position: relative;
-    left: 50%;
-    transform: translateX(-50%); */
-    text-align: left;
-}
+
 .data {
     border: 3px solid #DDDDDD;
     height: 50px;
@@ -648,16 +599,17 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: left;
 }
 
 .data_val {
     font-family: 'Quantico', sans-serif;
     color: #000000;
-    font-size: 22px;
+    font-size: 25px;
+}
+
+#rank,
+#name {
+    font-size: 20px;
 }
 
 .active-choice {
@@ -671,7 +623,7 @@ body {
 
 @media screen and (max-width:1000px) {
     .quiz-right {
-        margin-top: 20px;
+        display: none;
     }
 }
 

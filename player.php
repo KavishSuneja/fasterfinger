@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="quiz_player.css">
     <style>
         .quiz-btn-radio:checked+label .quiz-btn {
             background: linear-gradient(to right, #FF6400, #FFAE15);
