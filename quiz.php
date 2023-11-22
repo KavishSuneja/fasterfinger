@@ -181,6 +181,7 @@
             $(".sp").each((key,element) => {
                 if($(element).text()==questions[n].correctans){
                     $(element).parent().parent().css("background-color","green")
+                    $(element).parent().children('.quiz-letter').css("background-color","green");
                 }
             });
         })
