@@ -29,7 +29,10 @@
             background: linear-gradient(to right, #FF6400, #FFAE15);
             border: none;
         }
-
+        .quiz-btn-radio:checked+label .quiz-letter {
+            background:#FF6901 ;
+            
+        }
         .quiz-btn-radio {
             display: none;
         }
