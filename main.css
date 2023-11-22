@@ -19,6 +19,7 @@
     position: relative;
     left: 40px;
     width: calc(100% - 40px);
+    padding-top: 60px;
 }
 .start_head{
     position: relative;
@@ -245,7 +246,7 @@ select{
   position: absolute;
   left: 2%;
   /* margin: 10px; */
-  top: 0;
+  top: 150px;
 }
 
 

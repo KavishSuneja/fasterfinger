@@ -5,12 +5,27 @@
     
 }
 
+.logo-img{
+  /* border: 1px solid red; */
+  width: 250px;
+  position: absolute;
+  left: 3%;
+  /* margin: 10px; */
+  /* top: 150px; */
+  padding-top: 40px;
+}
+
+body{
+  height: 100vh;
+  overflow-y:hidden;
+}
 .bigimg{
     /* border: 1px solid red; */
     background: url(images/68745626762.png);
     height: 150vh;
     background-size: contain;
     background-repeat: no-repeat;
+    
 }
 .heading-span{
     /* border: 1px solid red; */
@@ -23,6 +38,8 @@
     color: #fefefe;
     font-size: 70px;
     font-weight: bolder;
+    margin-top: 50px;
+
 }
 
 .input-general{
@@ -35,6 +52,7 @@
     font-family: 'Ubuntu', sans-serif;
     color: #fefefe;   
     font-size: 30px;
+    margin-top: 50px;
 }
 .input-general2{
     /* border: 1px solid red; */
@@ -46,6 +64,7 @@
     font-family: 'Ubuntu', sans-serif;
     color: #fefefe;   
     font-size: 20px;
+    margin-top: 50px;
 }
 
 .last{
@@ -53,7 +72,9 @@
     position: absolute;
     right: 10%;
     top: 300px;
+    
 }
+
 
 .input-field{
     position: relative;
